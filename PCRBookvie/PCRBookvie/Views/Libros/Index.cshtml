@@ -1,0 +1,57 @@
+﻿@model IEnumerable<BEUBookvie.Libro>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.lib_tit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lib_aut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lib_fpb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lib_nej)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.cat_nom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_tit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_aut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_fpb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lib_nej)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.cat_nom)
+        </td>
+        <td>
+            @Html.ActionLink(" ", "Edit", new { id = item.lib_id }, htmlAttributes: new { @class = "btn btn-md btn-warning span glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.lib_id }, htmlAttributes: new { @class = "btn btn-md btn-primary span glyphicon glyphicon-search", @title = "Ver" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.lib_id }, htmlAttributes: new { @class = "btn btn-md btn-danger span glyphicon glyphicon-trash", @title = "Borrar" })
+        </td>
+    </tr>
+}
+
+</table>

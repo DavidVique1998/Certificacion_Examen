@@ -1,0 +1,12 @@
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\BEUBookvie.dll.config
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\BEUBookvie.dll
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\BEUBookvie.pdb
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\EntityFramework.dll
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\EntityFramework.xml
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\obj\Debug\BEUBookvie.csprojAssemblyReference.cache
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\obj\Debug\BEUBookvie.csproj.CoreCompileInputs.cache
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\obj\Debug\BEUBookvie.csproj.CopyComplete
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\obj\Debug\BEUBookvie.dll
+C:\Users\David\source\repos\Certificacion_Examen\PCRBookvie\BEUBookvie\obj\Debug\BEUBookvie.pdb

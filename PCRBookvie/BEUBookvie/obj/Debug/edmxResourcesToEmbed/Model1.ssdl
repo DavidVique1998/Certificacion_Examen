@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_nom" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="lib_id" />
+    </Key>
+    <Property Name="lib_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="lib_tit" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="lib_aut" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="lib_fpb" Type="datetime" Nullable="false" />
+    <Property Name="lib_nej" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="vid_id" />
+    </Key>
+    <Property Name="vid_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="vid_tit" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="vid_fpb" Type="datetime" Nullable="false" />
+    <Property Name="vid_frm" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="vid_dur" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Libro__cat_id__5CD6CB2B">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Libro">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Video__cat_id__59FA5E80">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Video" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Libro" EntityType="Self.Libro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Libro__cat_id__5CD6CB2B" Association="Self.FK__Libro__cat_id__5CD6CB2B">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Libro" EntitySet="Libro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Video__cat_id__59FA5E80" Association="Self.FK__Video__cat_id__59FA5E80">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Video" EntitySet="Video" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

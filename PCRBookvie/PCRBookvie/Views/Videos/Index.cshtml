@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BEUBookvie.Video>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vid_tit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vid_fpb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vid_frm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vid_dur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria.cat_nom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vid_tit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vid_fpb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vid_frm)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vid_dur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.cat_nom)
+        </td>
+        <td>
+
+            @Html.ActionLink(" ", "Edit", new { id = item.vid_id }, htmlAttributes: new { @class = "btn btn-md btn-warning span glyphicon glyphicon-pencil", @title = "Editar" }) |
+            @Html.ActionLink(" ", "Details", new { id = item.vid_id }, htmlAttributes: new { @class = "btn btn-md btn-primary span glyphicon glyphicon-search", @title = "Ver" }) |
+            @Html.ActionLink(" ", "Delete", new { id = item.vid_id }, htmlAttributes: new { @class = "btn btn-md btn-danger span glyphicon glyphicon-trash", @title = "Borrar" })
+        </td>
+    </tr>
+}
+
+</table>

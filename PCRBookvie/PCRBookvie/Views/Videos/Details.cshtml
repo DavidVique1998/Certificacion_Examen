@@ -1,0 +1,58 @@
+﻿@model BEUBookvie.Video
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Video</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vid_tit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vid_tit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vid_fpb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vid_fpb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vid_frm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vid_frm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vid_dur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vid_dur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.cat_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.cat_nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.vid_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

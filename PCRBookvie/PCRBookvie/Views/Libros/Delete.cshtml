@@ -1,0 +1,64 @@
+﻿@model BEUBookvie.Libro
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Libro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_tit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_tit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_aut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_aut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_fpb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_fpb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_nej)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_nej)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.cat_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.cat_nom)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

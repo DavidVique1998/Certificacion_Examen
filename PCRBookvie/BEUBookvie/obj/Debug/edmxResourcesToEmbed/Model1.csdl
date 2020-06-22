@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Libro" Relationship="Self.FK__Libro__cat_id__5CD6CB2B" FromRole="Categoria" ToRole="Libro" />
+    <NavigationProperty Name="Video" Relationship="Self.FK__Video__cat_id__59FA5E80" FromRole="Categoria" ToRole="Video" />
+  </EntityType>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="lib_id" />
+    </Key>
+    <Property Name="lib_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_id" Type="Int32" Nullable="false" />
+    <Property Name="lib_tit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lib_aut" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lib_fpb" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="lib_nej" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Libro__cat_id__5CD6CB2B" FromRole="Libro" ToRole="Categoria" />
+  </EntityType>
+  <EntityType Name="Video">
+    <Key>
+      <PropertyRef Name="vid_id" />
+    </Key>
+    <Property Name="vid_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cat_id" Type="Int32" Nullable="false" />
+    <Property Name="vid_tit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vid_fpb" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="vid_frm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vid_dur" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK__Video__cat_id__59FA5E80" FromRole="Video" ToRole="Categoria" />
+  </EntityType>
+  <Association Name="FK__Libro__cat_id__5CD6CB2B">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Libro">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Video__cat_id__59FA5E80">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Video" Type="Self.Video" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Video">
+        <PropertyRef Name="cat_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+    <EntitySet Name="Libro" EntityType="Self.Libro" />
+    <EntitySet Name="Video" EntityType="Self.Video" />
+    <AssociationSet Name="FK__Libro__cat_id__5CD6CB2B" Association="Self.FK__Libro__cat_id__5CD6CB2B">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Libro" EntitySet="Libro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Video__cat_id__59FA5E80" Association="Self.FK__Video__cat_id__59FA5E80">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Video" EntitySet="Video" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

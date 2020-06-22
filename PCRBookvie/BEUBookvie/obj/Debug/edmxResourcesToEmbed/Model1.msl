@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="Model.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="cat_nom" ColumnName="cat_nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Libro">
+      <EntityTypeMapping TypeName="Model.Libro">
+        <MappingFragment StoreEntitySet="Libro">
+          <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="lib_tit" ColumnName="lib_tit" />
+          <ScalarProperty Name="lib_aut" ColumnName="lib_aut" />
+          <ScalarProperty Name="lib_fpb" ColumnName="lib_fpb" />
+          <ScalarProperty Name="lib_nej" ColumnName="lib_nej" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Video">
+      <EntityTypeMapping TypeName="Model.Video">
+        <MappingFragment StoreEntitySet="Video">
+          <ScalarProperty Name="vid_id" ColumnName="vid_id" />
+          <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+          <ScalarProperty Name="vid_tit" ColumnName="vid_tit" />
+          <ScalarProperty Name="vid_fpb" ColumnName="vid_fpb" />
+          <ScalarProperty Name="vid_frm" ColumnName="vid_frm" />
+          <ScalarProperty Name="vid_dur" ColumnName="vid_dur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

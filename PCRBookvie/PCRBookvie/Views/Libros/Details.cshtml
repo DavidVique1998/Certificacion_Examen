@@ -1,0 +1,58 @@
+﻿@model BEUBookvie.Libro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Libro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_tit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_tit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_aut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_aut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_fpb)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_fpb)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lib_nej)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lib_nej)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.cat_nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.cat_nom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.lib_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

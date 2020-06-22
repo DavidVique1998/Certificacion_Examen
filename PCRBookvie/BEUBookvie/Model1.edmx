@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_nom" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Libro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="lib_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_id" Type="int" Nullable="false" />
+          <Property Name="lib_tit" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="lib_aut" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="lib_fpb" Type="datetime" Nullable="false" />
+          <Property Name="lib_nej" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="vid_id" />
+          </Key>
+          <Property Name="vid_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cat_id" Type="int" Nullable="false" />
+          <Property Name="vid_tit" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="vid_fpb" Type="datetime" Nullable="false" />
+          <Property Name="vid_frm" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="vid_dur" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Libro__cat_id__5CD6CB2B">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="Libro">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Video__cat_id__59FA5E80">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Libro" EntityType="Self.Libro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Libro__cat_id__5CD6CB2B" Association="Self.FK__Libro__cat_id__5CD6CB2B">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Libro" EntitySet="Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Video__cat_id__59FA5E80" Association="Self.FK__Video__cat_id__59FA5E80">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="cat_id" />
+          </Key>
+          <Property Name="cat_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Libro" Relationship="Self.FK__Libro__cat_id__5CD6CB2B" FromRole="Categoria" ToRole="Libro" />
+          <NavigationProperty Name="Video" Relationship="Self.FK__Video__cat_id__59FA5E80" FromRole="Categoria" ToRole="Video" />
+        </EntityType>
+        <EntityType Name="Libro">
+          <Key>
+            <PropertyRef Name="lib_id" />
+          </Key>
+          <Property Name="lib_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_id" Type="Int32" Nullable="false" />
+          <Property Name="lib_tit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_aut" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lib_fpb" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lib_nej" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Libro__cat_id__5CD6CB2B" FromRole="Libro" ToRole="Categoria" />
+        </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="vid_id" />
+          </Key>
+          <Property Name="vid_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cat_id" Type="Int32" Nullable="false" />
+          <Property Name="vid_tit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_fpb" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="vid_frm" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="vid_dur" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="Self.FK__Video__cat_id__59FA5E80" FromRole="Video" ToRole="Categoria" />
+        </EntityType>
+        <Association Name="FK__Libro__cat_id__5CD6CB2B">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Libro" Type="Self.Libro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="Libro">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Video__cat_id__59FA5E80">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="cat_id" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+          <EntitySet Name="Libro" EntityType="Self.Libro" />
+          <EntitySet Name="Video" EntityType="Self.Video" />
+          <AssociationSet Name="FK__Libro__cat_id__5CD6CB2B" Association="Self.FK__Libro__cat_id__5CD6CB2B">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Libro" EntitySet="Libro" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Video__cat_id__59FA5E80" Association="Self.FK__Video__cat_id__59FA5E80">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="Model.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="cat_nom" ColumnName="cat_nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Libro">
+            <EntityTypeMapping TypeName="Model.Libro">
+              <MappingFragment StoreEntitySet="Libro">
+                <ScalarProperty Name="lib_id" ColumnName="lib_id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="lib_tit" ColumnName="lib_tit" />
+                <ScalarProperty Name="lib_aut" ColumnName="lib_aut" />
+                <ScalarProperty Name="lib_fpb" ColumnName="lib_fpb" />
+                <ScalarProperty Name="lib_nej" ColumnName="lib_nej" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="Model.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="vid_id" ColumnName="vid_id" />
+                <ScalarProperty Name="cat_id" ColumnName="cat_id" />
+                <ScalarProperty Name="vid_tit" ColumnName="vid_tit" />
+                <ScalarProperty Name="vid_fpb" ColumnName="vid_fpb" />
+                <ScalarProperty Name="vid_frm" ColumnName="vid_frm" />
+                <ScalarProperty Name="vid_dur" ColumnName="vid_dur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
